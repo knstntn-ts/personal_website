@@ -14,6 +14,9 @@ def index():
 def current_work():
     return render_template('current_work.html')
 
+@app.route('/side_projects')
+def side_projects():
+    return render_template('side_projects.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
