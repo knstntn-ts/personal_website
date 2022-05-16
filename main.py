@@ -18,6 +18,10 @@ def current_work():
 def side_projects():
     return render_template('side_projects.html')
 
+@app.route('/contact')
+def side_projects():
+    return render_template('contact.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
