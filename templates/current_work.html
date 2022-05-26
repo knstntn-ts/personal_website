@@ -2,23 +2,32 @@
     <header>
         <h2>My Current Work</h2>
     </header>
+
+    <a href="#side_projects" class="jumplink pic">
+        <span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
+    </a>
+
+    <a href="#home" class="jumplink pic">
+        <span class="arrow_left icon solid fa-chevron-left"><span>Home</span></span>
+    </a>
+
     <p>
         My current work is concerned with the design and development of the photovoltaic devices.
         I specialize in the simulation of the solar cells using dedicated software like Silvaco TCAD,
         GRIDDLER, COMSOL. My work also includes data analysis for prediction
         and/or determination of the potential performance of the devices.
     </p>
+    <p>Below are summaries of my past and present work.</p>
     <section>
         <div class="row">
+            {% for project in projects: %}
             <div class="col-4 col-6-medium col-12-small">
-                <a href="" class="image fit"><img class='' src="static/images/current_work_4PP.jpg" alt="contact-resistivity-measurement"></a>
+
+                <a href="{{ url_for('show_work', project_id=project.id) }}" class="image fit"><img
+                        src="{{project.img_url}}" alt="{{project.img_alt}}"></a>
             </div>
-            <div class="col-4 col-6-medium col-12-small">
-                <a href="#" class="image fit"><img src="static/images/current_work_CS.jpg" alt="cox-strack-contact-resistivity"></a>
-            </div>
-            <div class="col-4 col-6-medium col-12-small">
-                <a href="#" class="image fit"><img src="static/images/current_work_FA_correction.jpg" alt="contact-resistivity-full-area-metal"></a>
-            </div>
+            {% endfor %}
+
         </div>
     </section>
 </article>
