@@ -27,7 +27,7 @@ def index():
 
 
 @app.route('/#work')
-@app.route('/work')
+# @app.route('/work')
 def current_work():
     projects = Project.query.all()
     return render_template('current_work.html', current_work=projects)
