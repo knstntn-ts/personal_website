@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, render_template_string
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -18,6 +18,9 @@ class Project(db.Model):
     subtitle = db.Column(db.String(250), nullable=False)
     body = db.Column(db.Text, nullable=False)
     img_url = db.Column(db.String(250), nullable=False)
+    img_main_1 = db.Column(db.String(250), nullable=False)
+    img_main_2 = db.Column(db.String(250), nullable=False)
+    html = db.Column(db.Text, nullable=False)
 
 
 @app.route('/')
@@ -47,8 +50,9 @@ def contact():
 
 @app.route("/project/<int:project_id>", methods=["GET", "POST"])
 def show_work(project_id):
-    project_to_show = Project.query.get(project_id)
-    return render_template('project.html', project=project_to_show)
+    project = Project.query.get(project_id)
+    return render_template_string(project.html, project=project)
+    # return render_template('project.html', project=project_to_show)
 
 
 if __name__ == '__main__':

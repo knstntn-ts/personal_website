@@ -1,4 +1,3 @@
-
 <article id="side_projects" class="panel">
     <header>
         <h2>Side projects</h2>
@@ -17,15 +16,45 @@
     </p>
     <section>
         <div class="row">
-            <div class="col-4 col-6-medium col-12-small">
-                <a href="" class="image fit"><img src="" alt=""></a>
+
+            {% for project in projects: %}
+            <div class="card">
+                <div class="fit front">
+                    <div class="row align-items-center">
+                        <div class="col md-6 title">{{project.title}}</div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col md-6">
+                            <a href="{{ url_for('show_work', project_id=project.id) }}"><img src="{{project.img_url}}"
+                                    alt="{{project.img_alt}}" width="90%" class=""></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="fit back col-4 col-6-medium col-12-small">
+                    <div>
+                        <div class="title">{{project.title}}</div>
+                        <p class="overview">
+                            {{project.subtitle}}
+                        </p>
+
+                        <a href="#" class="button">Update</a>
+                        <a href="#" class="button delete-button">Delete</a>
+
+                    </div>
+                </div>
             </div>
-            <div class="col-4 col-6-medium col-12-small">
-                <a href="" class="image fit"><img src="" alt=""></a>
-            </div>
-            <div class="col-4 col-6-medium col-12-small">
-                <a href="#" class="image fit"><img src="" alt=""></a>
-            </div>
+            {% endfor %}
         </div>
     </section>
 </article>
+
+<div class="row">
+    {% for project in projects: %}
+    <div class="col-4 col-6-medium col-12-small">
+
+        <a href="{{ url_for('show_work', project_id=project.id) }}" class="image fit"><img src="{{project.img_url}}"
+                alt="{{project.img_alt}}"></a>
+    </div>
+    {% endfor %}
+</div>
