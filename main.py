@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 
-##CONNECT TO DB
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -31,7 +30,7 @@ def index():
 
 
 @app.route('/#work')
-@app.route('/work')
+# @app.route('/work')
 def current_work():
     projects = Project.query.all()
     return render_template('current_work.html', current_work=projects)
