@@ -19,12 +19,12 @@
 
             {% for project in projects: %}
             <div class="card">
-                <div class="fit front">
-                    <div class="row align-items-center">
-                        <div class="col md-6 title">{{project.title}}</div>
+                <div class="front col-4 col-6-medium col-12-small">
+                    <div class="row">
+                        <div class="title">{{project.title}}</div>
                     </div>
-                    <div class="row align-items-center">
-                        <div class="col md-6">
+                    <div class="row">
+                        <div class="card-content">
                             <a href="{{ url_for('show_work', project_id=project.id) }}"><img src="{{project.img_url}}"
                                     alt="{{project.img_alt}}" width="90%" class=""></a>
                         </div>
