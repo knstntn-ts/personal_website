@@ -48,13 +48,3 @@
         </div>
     </section>
 </article>
-
-<div class="row">
-    {% for project in projects: %}
-    <div class="col-4 col-6-medium col-12-small">
-
-        <a href="{{ url_for('show_work', project_id=project.id) }}" class="image fit"><img src="{{project.img_url}}"
-                alt="{{project.img_alt}}"></a>
-    </div>
-    {% endfor %}
-</div>
