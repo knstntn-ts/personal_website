@@ -24,16 +24,20 @@
             {% for project in projects: %}
             <div class="card">
                 <div class="front col-4 col-6-medium col-12-small">
-                    <div class="row">
+                    <div class="row" style="justify-content: center;">
                         <div class="title">{{project.title}}</div>
                     </div>
+                    {% if project.img_url: %}
                     <div class="row">
+
                         <div class="card-content">
                             <img src="{{project.img_url}}" alt="{{project.img_alt}}" width="90%"
                                 class="img-fluid rounded mx-auto d-block">
                         </div>
-                    </div>
 
+
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="back col-4 col-6-medium col-12-small">
                     <div>

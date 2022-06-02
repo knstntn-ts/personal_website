@@ -1,8 +1,9 @@
-from flask import Flask, render_template, render_template_string
+from flask import Flask, render_template, render_template_string, redirect
 from flask_sqlalchemy import SQLAlchemy
+from urllib.parse import unquote, quote
+
 
 app = Flask(__name__)
-
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website.db'
@@ -21,35 +22,31 @@ class Project(db.Model):
     html_body_path = db.Column(db.String(250), nullable=False)
 
 
+@app.route('/#home')
 @app.route('/')
-@app.route('/index')
 def index():
     projects = Project.query.all()
     return render_template('index.html', projects=projects)
 
 
-@app.route('/#work')
-# @app.route('/work')
+@app.route('/current_work')
 def current_work():
-    projects = Project.query.all()
-    return render_template('current_work.html', current_work=projects)
+    return redirect('/#work')
 
 
 @app.route('/side_projects')
 def side_projects():
-
-    return render_template('side_projects.html')
+    return redirect('/#side_projects')
 
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return redirect('/#contact')
 
 
 @app.route("/project/<int:project_id>", methods=["GET", "POST"])
 def show_work(project_id):
     project = Project.query.get(project_id)
-    # return render_template_string(project.html, project=project)
     return render_template('project.html', project=project)
 
 
