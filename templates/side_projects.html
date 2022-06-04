@@ -17,29 +17,33 @@
     <section>
         <div class="row">
 
-            {% for project in projects: %}
+            {% for project in side_projects: %}
             <div class="card">
                 <div class="front col-4 col-6-medium col-12-small">
-                    <div class="row">
+                    <div class="row" style="justify-content: center;">
                         <div class="title">{{project.title}}</div>
                     </div>
-                    <div class="row">
-                        <div class="card-content">
-                            <a href="{{ url_for('show_work', project_id=project.id) }}"><img src="{{project.img_url}}"
-                                    alt="{{project.img_alt}}" width="90%" class=""></a>
-                        </div>
-                    </div>
+                    {% if project.img_url: %}
+                    <div class="row" style="justify-content: center;">
 
+                        <div class="card-content">
+                            <img src="{{project.img_url}}" alt="{{project.img_alt}}" width="90%"
+                                class="img-fluid rounded mx-auto d-block">
+                        </div>
+
+
+                    </div>
+                    {% endif %}
                 </div>
-                <div class="fit back col-4 col-6-medium col-12-small">
+                <div class="back col-4 col-6-medium col-12-small">
                     <div>
                         <div class="title">{{project.title}}</div>
                         <p class="overview">
                             {{project.subtitle}}
                         </p>
 
-                        <a href="#" class="button">Update</a>
-                        <a href="#" class="button delete-button">Delete</a>
+                        <a class="btn btn-primary" href="{{ url_for('show_side_project', project_id=project.id) }}"
+                            role="button" style="color: #29b1e7;">View Details</a>
 
                     </div>
                 </div>
