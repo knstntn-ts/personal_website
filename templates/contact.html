@@ -7,7 +7,9 @@
         <span class="arrow_left icon solid fa-chevron-left"><span>Side Projects</span></span>
     </a>
 
-    <form action="#" method="post">
+    {% if not msg_sent: %}
+
+    <form id='contactForm' action="{{ url_for('send_message') }}" method="post" novalidate>
         <div>
             <div class="row">
                 <div class="col-6 col-12-medium">
@@ -28,4 +30,9 @@
             </div>
         </div>
     </form>
+    {% else: %}
+
+    <h1>Sent</h1>
+    {% endif %}
+
 </article>
