@@ -1,13 +1,5 @@
-from flask import Flask, render_template, render_template_string, redirect, request
+from flask import Flask, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
-import smtplib
-# OWN_EMAIL = 'kt.personal.page@gmail.com'
-# # OWN_EMAIL = 'knstntn.ts@yahoo.com'
-#
-# OWN_PASSWORD = 'casio925'
-
-OWN_EMAIL = 'arcelikinterns2016@gmail.com'
-OWN_PASSWORD = 'casio925'
 
 
 app = Flask(__name__)
@@ -64,29 +56,6 @@ def side_projects():
 @app.route('/contact')
 def contact():
     return redirect('/#contact')
-
-
-# smtp.mail.yahoo.com
-def send_email(name, email, subject, message):
-    email_message = f"Subject:New Message\n\nName: {name}\nEmail: {email}\nPhone: {subject}\nMessage:{message}"
-    try:
-        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-        server.ehlo()
-        server.login(OWN_EMAIL, OWN_PASSWORD)
-        server.sendmail(OWN_EMAIL, OWN_EMAIL, email_message)
-        server.close()
-
-    except Exception as exception:
-        print("Error: %s!\n\n" % exception)
-
-
-@app.route('/contact-me', methods=["GET", "POST"])
-def send_message():
-    if request.method == "POST":
-        data = request.form
-        send_email(data["name"], data["email"], data["subject"], data["message"])
-        return render_template("contact_sent.html", msg_sent=True)
-    # return render_template('contact_sent.html', msg_sent=False)
 
 
 @app.route("/project/<int:project_id>", methods=["GET", "POST"])

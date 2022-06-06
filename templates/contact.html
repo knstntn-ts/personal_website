@@ -1,38 +1,14 @@
 <article id="contact" class="panel">
     <header>
-        <h2>Contact Me</h2>
+        <h1 style="margin-bottom: 1em;">My socials</h1>
+        <p>Email: <u style="color: rgb(82, 82, 82);">knstntn.ts@gmail.com</u></p>
+        <p>Github: <a href="https://github.com/knstntn-ts" style="color: rgb(82, 82, 82);">knstntn-ts</a></p>
+        <p>ResearchGate (academic activity): <a href="https://www.researchgate.net/profile/Konstantin-Tsoi"
+                style="color: rgb(82, 82, 82);">Konstantin Tsoi </a></p>
     </header>
 
     <a href="#side_projects" class="jumplink pic">
-        <span class="arrow_left icon solid fa-chevron-left"><span>Side Projects</span></span>
+        <span class="arrow_left icon solid fa-chevron-left" style="left: 0; right:100%;"><span>Side
+                Projects</span></span>
     </a>
-
-    {% if not msg_sent: %}
-
-    <form id='contactForm' action="{{ url_for('send_message') }}" method="post" novalidate>
-        <div>
-            <div class="row">
-                <div class="col-6 col-12-medium">
-                    <input type="text" name="name" placeholder="Name" />
-                </div>
-                <div class="col-6 col-12-medium">
-                    <input type="text" name="email" placeholder="Email" />
-                </div>
-                <div class="col-12">
-                    <input type="text" name="subject" placeholder="Subject" />
-                </div>
-                <div class="col-12">
-                    <textarea name="message" placeholder="Message" rows="6"></textarea>
-                </div>
-                <div class="col-12">
-                    <input type="submit" value="Send Message" />
-                </div>
-            </div>
-        </div>
-    </form>
-    {% else: %}
-
-    <h1>Sent</h1>
-    {% endif %}
-
 </article>
